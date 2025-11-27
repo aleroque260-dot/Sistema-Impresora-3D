@@ -1,0 +1,7 @@
+{ 
+    "python.defaultInterpreterPath": "${workspaceFolder}/backend/venv/bin/python",
+    "emmet.includeLanguages": {"django-html":"html"},
+    "files.associations": {"**/templates/**/*.html":"django-html"},
+    "editor.formatOnSave": true,
+    "files.autoSave": "onFocusChange"
+}
