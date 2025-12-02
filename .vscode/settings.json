@@ -1,9 +1,18 @@
-{ 
+{
     "python.defaultInterpreterPath": "${workspaceFolder}/backend/venv/Scripts/python.exe",
-    "emmet.includeLanguages": {"django-html":"html"},
-    "files.associations": {"**/templates/**/*.html":"django-html"},
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+    "files.associations": {
+        "**/templates/**/*.html": "django-html"
+    },
     "editor.formatOnSave": true,
     "files.autoSave": "onFocusChange",
     "css.validate": false,
-    "tailwindCSS.includeLanguages": {"plaintext":"html"}
+    "tailwindCSS.includeLanguages": {
+        "plaintext": "html"
+    },
+    "github.copilot.enable": {
+        "*": true
+    }
 }
