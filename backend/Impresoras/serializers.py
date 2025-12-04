@@ -3,7 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from .models import (
     Department, UserProfile, Printer, UserPrinterAssignment,
-    PricingConfig, UserPricingProfile, PrintJob, SystemLog
+    PricingConfig, UserPricingProfile, PrintJob, SystemLog,
+    JobStatus, PrinterStatus, UserRole, MaterialType, DepartmentType,
+    PrinterType, LogAction
 )
 
 
@@ -97,7 +99,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
     
     def validate(self, data):
         """Validación personalizada para UserProfile"""
-        if data.get('role') == UserProfile.UserRole.STUDENT and not data.get('student_id'):
+        if data.get('role') == UserRole.STUDENT and not data.get('student_id'):
             raise serializers.ValidationError(
                 {"student_id": "Los estudiantes deben tener un carné de estudiante"}
             )
@@ -201,7 +203,7 @@ class PrintJobSerializer(serializers.ModelSerializer):
 
 class PrintJobStatusUpdateSerializer(serializers.Serializer):
     """Serializer para actualizar estado de PrintJob"""
-    status = serializers.ChoiceField(choices=PrintJob.JobStatus.choices)
+    status = serializers.ChoiceField(choices=JobStatus.choices)  # ← CORREGIDO
     actual_hours = serializers.FloatField(required=False, min_value=0.1)
     error_message = serializers.CharField(required=False, allow_blank=True)
 

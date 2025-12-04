@@ -4,16 +4,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
+# INCLUYE api-auth URLs
 urlpatterns = [
-    # Admin
     path('admin/', admin.site.urls),
-    
-    # API Authentication (JWT)
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    
-    # API App
-    path('api/', include('impresoras.urls')),
+    path('api/', include('Impresoras.urls')),
+    path('api-auth/', include('rest_framework.urls')),  # ← AÑADE ESTA LÍNEA
 ]
 
 if settings.DEBUG:
